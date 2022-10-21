@@ -38,6 +38,11 @@
   - 公開記録一覧、詳細、編集、削除
   - コメント一覧、詳細、編集、削除
 
+### 画面遷移図
+
+Figma リンク  
+https://www.figma.com/file/s1FsnwtiZpqgXouTMo6ap3/Daily-mind-Screen-transitions
+
 ### なぜこのサービスを作りたいのか？
 
 自分だけでなく、よく自己否定したり、ネガティブな気分になりがちな友達が結構いる。
