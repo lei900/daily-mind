@@ -43,6 +43,11 @@
 Figma リンク  
 https://www.figma.com/file/s1FsnwtiZpqgXouTMo6ap3/Daily-mind-Screen-transitions
 
+### ER 図
+
+Drawio 共有リンク  
+https://drive.google.com/file/d/1n5JOkpUXLjSfRYyG3F08gCQ-uc4FHYBj/view?usp=sharing
+
 ### なぜこのサービスを作りたいのか？
 
 自分だけでなく、よく自己否定したり、ネガティブな気分になりがちな友達が結構いる。
