@@ -29,3 +29,13 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+.env
+
+/node_modules
+/yarn-error.log
+
+# irb
+.irb_history
+
+/coverage
