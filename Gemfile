@@ -48,12 +48,21 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# admin dashboard
+gem "administrate"
+gem 'administrate-field-enum'
+gem 'administrate-field-active_storage'
+gem "administrate-field-nested_has_many"
+gem 'administrate-field-belongs_to_search'
+
+
+
 # Storage
   # gem 'aws-sdk-s3', require: false
-  # gem 'mini_magick'
+  gem 'mini_magick'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
 # gem 'jwt'
