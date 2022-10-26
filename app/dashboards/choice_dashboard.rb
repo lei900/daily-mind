@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ExerciseDashboard < Administrate::BaseDashboard
+class ChoiceDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,13 +9,9 @@ class ExerciseDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    conclusion: RichTextAreaField,
-    detailed_description: RichTextAreaField,
-    image: Field::String,
-    questions: Field::HasMany,
-    short_description: Field::String,
-    slug: Field::String,
-    title: Field::String,
+    content: Field::String,
+    is_correct_choice: Field::Boolean,
+    question: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,19 +21,20 @@ class ExerciseDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = %i[id conclusion detailed_description image].freeze
+  COLLECTION_ATTRIBUTES = %i[
+    id
+    content
+    is_correct_choice
+    question
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    conclusion
-    detailed_description
-    image
-    questions
-    short_description
-    slug
-    title
+    content
+    is_correct_choice
+    question
     created_at
     updated_at
   ].freeze
@@ -46,13 +43,9 @@ class ExerciseDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    conclusion
-    detailed_description
-    image
-    questions
-    short_description
-    slug
-    title
+    content
+    is_correct_choice
+    question
   ].freeze
 
   # COLLECTION_FILTERS
@@ -67,10 +60,10 @@ class ExerciseDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how exercises are displayed
+  # Overwrite this method to customize how choices are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(exercise)
-  #   "Exercise ##{exercise.id}"
+  # def display_resource(choice)
+  #   "Choice ##{choice.id}"
   # end
 end
