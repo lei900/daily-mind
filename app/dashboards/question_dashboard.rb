@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ExerciseDashboard < Administrate::BaseDashboard
+class QuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,13 +9,10 @@ class ExerciseDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    conclusion: Field::Text,
-    detailed_description: Field::Text,
-    image: Field::String,
-    questions: Field::HasMany,
-    short_description: Field::String,
-    slug: Field::String,
-    title: Field::String,
+    body: Field::Text,
+    choices: Field::HasMany,
+    exercise: Field::BelongsTo,
+    result_interpretation: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,19 +22,16 @@ class ExerciseDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = %i[id conclusion detailed_description image].freeze
+  COLLECTION_ATTRIBUTES = %i[id body choices exercise].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    conclusion
-    detailed_description
-    image
-    questions
-    short_description
-    slug
-    title
+    body
+    choices
+    exercise
+    result_interpretation
     created_at
     updated_at
   ].freeze
@@ -45,15 +39,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
-    conclusion
-    detailed_description
-    image
-    questions
-    short_description
-    slug
-    title
-  ].freeze
+  FORM_ATTRIBUTES = %i[body choices exercise result_interpretation].freeze
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
@@ -67,10 +53,10 @@ class ExerciseDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how exercises are displayed
+  # Overwrite this method to customize how questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(exercise)
-  #   "Exercise ##{exercise.id}"
+  # def display_resource(question)
+  #   "Question ##{question.id}"
   # end
 end
