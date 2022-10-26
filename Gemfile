@@ -18,9 +18,6 @@ gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-# # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-# gem "jsbundling-rails"
-
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
@@ -30,11 +27,8 @@ gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem 'tailwindcss-rails'
 
-# # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-# gem "cssbundling-rails"
-
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+# Build JSON APIs [https://github.com/jsonapi-serializer/jsonapi-serializer]
+gem 'jsonapi-serializer'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -72,8 +66,6 @@ gem "image_processing", "~> 1.2"
 
 # Authorization
 # gem 'pundit'
-
-gem 'jsonapi-serializer'
 
 # Rack Middleware makes cross-origin AJAX possible
 # gem 'rack-cors'

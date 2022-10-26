@@ -20,4 +20,5 @@
 class Question < ApplicationRecord
   belongs_to :exercise
   has_many :choices, dependent: :destroy
+  validates :body, presence: true
 end

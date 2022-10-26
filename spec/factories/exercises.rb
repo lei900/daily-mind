@@ -14,11 +14,11 @@
 #
 FactoryBot.define do
   factory :exercise do
-    title { "MyString" }
+    sequence(:title) { |n| "MyExerciseTitle-#{n}" }
     short_description { "MyString" }
     detailed_description { "MyText" }
     image { "MyString" }
     conclusion { "MyText" }
-    type { "" }
+    sequence(:slug) { |n| "exercise-#{n}" }
   end
 end

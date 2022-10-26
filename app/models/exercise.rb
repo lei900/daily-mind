@@ -14,6 +14,8 @@
 #
 class Exercise < ApplicationRecord
   has_many :questions
+  validates :title, presence: true
+  validates :slug, presence: true
 
   # Set prettier urls, like "/exercises/1-separate-situation-and-thought"
   def to_param
