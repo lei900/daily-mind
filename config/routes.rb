@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api, format: "json" do
     namespace :v1 do
-      resources :exercises, only: %i[index show]
+      resources :exercises, only: %i[index show] do
+        resources :questions, only: %i[index show]
+      end
     end
   end
 

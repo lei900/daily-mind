@@ -17,10 +17,7 @@
 #
 #  fk_rails_...  (exercise_id => exercises.id)
 #
-FactoryBot.define do
-  factory :question do
-    exercise
-    sequence(:body) { |n| "MyQuestion-#{n}" }
-    sequence(:result_interpretation) { |n| "MyResult-#{n}" }
-  end
+class QuestionSerializer
+  include JSONAPI::Serializer
+  attributes :body, :result_interpretation, :choices
 end
