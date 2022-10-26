@@ -1,4 +1,4 @@
-class ExcerciseSerializer
+class ExerciseSerializer
   include JSONAPI::Serializer
   attributes :title,
              :short_description,
@@ -6,5 +6,5 @@ class ExcerciseSerializer
              :image,
              :conclusion,
              :slug
-  has_many :questions
+  # has_many :questions
 end

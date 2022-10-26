@@ -2,14 +2,15 @@ module Api
   module V1
     class ExercisesController < BaseController
       def index
-        excercises = Excercise.all
-        json_string = ExcerciseSerializer.new(articles).serialized_json
+        exercises = Exercise.all
+        json_string =
+          ExerciseSerializer.new(exercises).serializable_hash.to_json
         render json: json_string
       end
 
       def show
-        excercise = Excercise.find(params[:id])
-        json_string = ExcerciseSerializer.new(article).serialized_json
+        exercise = Exercise.find(params[:id])
+        json_string = ExerciseSerializer.new(exercise).serializable_hash.to_json
         render json: json_string
       end
     end

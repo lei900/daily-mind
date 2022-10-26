@@ -19,6 +19,7 @@
 #
 FactoryBot.define do
   factory :question do
+    exercise
     body { "MyString" }
     result_interpretation { "MyString" }
   end
