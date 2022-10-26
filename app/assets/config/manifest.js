@@ -6,5 +6,3 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
-//= link administrate-field-trix/application.css
-//= link administrate-field-trix/application.js

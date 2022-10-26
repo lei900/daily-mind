@@ -9,10 +9,10 @@ class QuestionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    body: RichTextAreaField,
+    body: Field::Text,
     choices: Field::HasMany,
     exercise: Field::BelongsTo,
-    result_interpretation: RichTextAreaField,
+    result_interpretation: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -22,12 +22,7 @@ class QuestionDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = %i[
-    id
-    body
-    choices
-    exercise
-  ].freeze
+  COLLECTION_ATTRIBUTES = %i[id body choices exercise].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -44,12 +39,7 @@ class QuestionDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
-    body
-    choices
-    exercise
-    result_interpretation
-  ].freeze
+  FORM_ATTRIBUTES = %i[body choices exercise result_interpretation].freeze
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
