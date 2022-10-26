@@ -13,8 +13,6 @@
 #  updated_at           :datetime         not null
 #
 class Exercise < ApplicationRecord
-  has_rich_text :detailed_description
-  has_rich_text :conclusion
   has_many :questions
 
   # Set prettier urls, like "/exercises/1-separate-situation-and-thought"

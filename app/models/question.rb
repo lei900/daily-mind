@@ -18,8 +18,6 @@
 #  fk_rails_...  (exercise_id => exercises.id)
 #
 class Question < ApplicationRecord
-  has_rich_text :body
-  has_rich_text :result_interpretation
   belongs_to :exercise
   has_many :choices, dependent: :destroy
 end
