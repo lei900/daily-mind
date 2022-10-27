@@ -22,5 +22,9 @@ FactoryBot.define do
     exercise
     sequence(:body) { |n| "MyQuestion-#{n}" }
     sequence(:result_interpretation) { |n| "MyResult-#{n}" }
+
+    after :create do |question|
+      create_list :choice, 4, question: question
+    end
   end
 end
