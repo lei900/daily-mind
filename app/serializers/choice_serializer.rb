@@ -17,10 +17,7 @@
 #
 #  fk_rails_...  (question_id => questions.id)
 #
-FactoryBot.define do
-  factory :choice do
-    question
-    sequence(:content) { |n| "MyContent-#{n}" }
-    is_correct_choice { [true, false].sample }
-  end
+class ChoiceSerializer
+  include JSONAPI::Serializer
+  attributes :content, :is_correct_choice
 end
