@@ -29,7 +29,7 @@ RSpec.describe "Api::V1::Questions", type: :request do
     it "returns question with choices in json format" do
       get api_v1_exercise_question_path(exercise, question), headers: headers
 
-      expect(body["data"]["id"].to_i).to eq(question.id)
+      expect(body["data"][0]["id"].to_i).to eq(question.id)
       expect(body["data"][0]["attributes"]["choices"].count).to eq 4
 
       expect(response).to be_successful
