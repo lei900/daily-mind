@@ -27,7 +27,7 @@ class Entry < ApplicationRecord
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
   accepts_nested_attributes_for :entryable
 
-  enum :status, { draft: 0, published: 1, private: 2 }
+  enum :status, { draft: 0, published: 1, private: 2 }, prefix: true
 
   # params = { note: { authorable_type: 'Employee', body: "sample text", authorable_attributes: { name: 'Emp one' } } }
   # note = Note.create!(params[:note])
