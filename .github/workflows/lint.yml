@@ -1,5 +1,5 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
-# run tests and linters.
+# run linters.
 name: "Lint"
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - README.md
       - LICENSE
   workflow_dispatch:
-  
+
 jobs:
   lint:
     runs-on: ubuntu-latest
