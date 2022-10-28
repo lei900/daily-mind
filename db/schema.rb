@@ -71,11 +71,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_111706) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "title"
-    t.string "short_description"
+    t.string "caption"
     t.text "detailed_description"
     t.string "image"
     t.text "conclusion"
-    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,13 +96,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_111706) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "sub", null: false
+    t.string "nickname", null: false
     t.string "bio"
     t.integer "role", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.string "username"
     t.string "profile_picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "analysis_distortions", "distortions"

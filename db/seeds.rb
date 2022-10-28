@@ -9,21 +9,19 @@
 exercise_1 =
   Exercise.create!(
     title: "練習_1",
-    short_description: "紹介_1",
+    caption: "紹介_1",
     detailed_description: "詳細_1",
     image: "string",
     conclusion: "結論_1",
-    slug: "exercise-emotion",
   )
 
 exercise_2 =
   Exercise.create!(
     title: "練習_2",
-    short_description: "紹介_2",
+    caption: "紹介_2",
     detailed_description: "詳細_2",
     image: "string",
     conclusion: "結論_2",
-    slug: "exercise-situation",
   )
 
 question_1_1 =
