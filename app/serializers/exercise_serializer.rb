@@ -13,10 +13,5 @@
 #
 class ExerciseSerializer
   include JSONAPI::Serializer
-  attributes :title,
-             :short_description,
-             :detailed_description,
-             :image,
-             :conclusion,
-             :slug
+  attributes :title, :caption, :detailed_description, :image, :conclusion
 end

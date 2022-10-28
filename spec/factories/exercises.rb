@@ -14,10 +14,9 @@
 FactoryBot.define do
   factory :exercise do
     sequence(:title) { |n| "MyExerciseTitle-#{n}" }
-    short_description { "MyString" }
+    caption { "MyString" }
     detailed_description { "MyText" }
     image { "MyString" }
     conclusion { "MyText" }
-    sequence(:slug) { |n| "exercise-#{n}" }
   end
 end

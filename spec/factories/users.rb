@@ -19,13 +19,12 @@
 #
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
+    sub { "MySub" }
+    nickname { "MyString" }
     bio { "MyText" }
-    role { "MyString" }
-    integer { "MyString" }
+    role { 0 }
+    status { 0 }
     username { "MyString" }
-    string { "MyString" }
     profile_picture { "MyString" }
-    string { "MyString" }
   end
 end
