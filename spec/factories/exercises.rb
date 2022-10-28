@@ -3,12 +3,11 @@
 # Table name: exercises
 #
 #  id                   :bigint           not null, primary key
-#  title                :string
-#  short_description    :string
+#  caption              :string
+#  conclusion           :text
 #  detailed_description :text
 #  image                :string
-#  conclusion           :text
-#  slug                 :string
+#  title                :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
