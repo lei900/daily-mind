@@ -8,6 +8,7 @@
 #  profile_picture :string
 #  role            :integer          default("general"), not null
 #  status          :integer          default("active"), not null
+#  sub: Subject of the JWT (the user)
 #  sub             :string           not null
 #  username        :string
 #  created_at      :datetime         not null
@@ -22,4 +23,9 @@ class User < ApplicationRecord
 
   enum :role, { general: 0, admin: 1 }, default: :general
   enum :status, { active: 0, deactivated: 1 }, default: :active
+
+  # # token情報を参照し、現在のユーザーを取得
+  # def self.from_token_payload(payload)
+  #   find_by(sub: payload["sub"]) || create!(sub: payload["sub"])
+  # end
 end

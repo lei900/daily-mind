@@ -1,4 +1,8 @@
-# frozen_string_literal: true
+# JsonWebToken decodes and verifies the incoming access token taken from
+# the Authorization header of the request.
+# JsonWebToken retrieves the public key for your Auth0 tenant
+# and then uses it to verify the signature of the access token.
+
 require "net/http"
 require "uri"
 
