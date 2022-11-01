@@ -21,11 +21,17 @@
 class User < ApplicationRecord
   has_many :entries, dependent: :destroy
 
+  validates :sub, presence: true, uniqueness: true
+  validates :role, presence: true
+  validates :status, presence: true
+  validates :nickname, presence: true
+
   enum :role, { general: 0, admin: 1 }, default: :general
   enum :status, { active: 0, deactivated: 1 }, default: :active
 
-  # # token情報を参照し、現在のユーザーを取得
-  # def self.from_token_payload(payload)
-  #   find_by(sub: payload["sub"]) || create!(sub: payload["sub"])
-  # end
+  # token情報を参照し、現在のユーザーを取得
+  # ユーザー存在しない場合、新規ユーザー登録
+  def self.from_token_payload(payload)
+    find_by(sub: payload["sub"]) || create!(sub: payload["sub"])
+  end
 end
