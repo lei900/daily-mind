@@ -62,13 +62,13 @@ gem 'mini_magick'
 gem "image_processing", "~> 1.2"
 
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
-# gem 'jwt'
+gem 'jwt'
 
 # Authorization
 # gem 'pundit'
 
 # Rack Middleware makes cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # API
 # gem 'faraday'
