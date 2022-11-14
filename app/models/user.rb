@@ -27,10 +27,4 @@ class User < ApplicationRecord
 
   enum :role, { general: 0, admin: 1 }, default: :general
   enum :status, { active: 0, deactivated: 1 }, default: :active
-
-  # token情報を参照し、現在のユーザーを取得
-  # ユーザー存在しない場合、新規ユーザー登録
-  def self.from_token_payload(payload)
-    find_by(uid: payload["sub"]) || create!(uid: payload["sub"])
-  end
 end
