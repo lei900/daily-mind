@@ -8,8 +8,7 @@
 #  profile_picture :string
 #  role            :integer          default("general"), not null
 #  status          :integer          default("active"), not null
-#  sub: Subject of the JWT (the user)
-#  sub             :string           not null
+#  uid             :string           not null
 #  username        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -21,7 +20,7 @@
 class User < ApplicationRecord
   has_many :entries, dependent: :destroy
 
-  validates :sub, presence: true, uniqueness: true
+  validates :uid, presence: true, uniqueness: true
   validates :role, presence: true
   validates :status, presence: true
   validates :nickname, presence: true
@@ -32,6 +31,6 @@ class User < ApplicationRecord
   # token情報を参照し、現在のユーザーを取得
   # ユーザー存在しない場合、新規ユーザー登録
   def self.from_token_payload(payload)
-    find_by(sub: payload["sub"]) || create!(sub: payload["sub"])
+    find_by(uid: payload["sub"]) || create!(uid: payload["sub"])
   end
 end

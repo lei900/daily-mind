@@ -8,7 +8,7 @@
 #  profile_picture :string
 #  role            :integer          default("general"), not null
 #  status          :integer          default("active"), not null
-#  sub             :string           not null
+#  uid             :string           not null
 #  username        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
