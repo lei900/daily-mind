@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  index_users_on_uid  (uid)
+#  index_users_on_uid  (uid) UNIQUE
 #
 require 'rails_helper'
 

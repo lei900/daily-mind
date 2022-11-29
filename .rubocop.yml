@@ -124,3 +124,11 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+# Disable the "Omit the hash value"
+# Enable to use hash like "message: message"
+Style/HashSyntax:
+  Enabled: false

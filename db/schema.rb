@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_000531) do
     t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["uid"], name: "index_users_on_uid"
+    t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
   add_foreign_key "analysis_distortions", "distortions"

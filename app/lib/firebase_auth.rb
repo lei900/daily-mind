@@ -61,11 +61,9 @@ module FirebaseAuth
 
     errors = verify(id_token, public_key)
 
-    if errors.empty?
-      return { uid: payload["user_id"] }
-    else
-      return { errors: errors.join(" / ") }
-    end
+    return { uid: payload["user_id"] } if errors.empty?
+
+    return { errors: errors.join(" / ") }
   end
 
   private
@@ -98,10 +96,9 @@ module FirebaseAuth
   def get_public_key(header)
     certificate = find_certificate(header["kid"])
     public_key = OpenSSL::X509::Certificate.new(certificate).public_key
+    return public_key
   rescue OpenSSL::X509::CertificateError => e
     raise "Invalid certificate. #{e.message}"
-
-    return public_key
   end
 
   # Find the corresponding certificate where the key is kid
@@ -112,7 +109,7 @@ module FirebaseAuth
   # }
   def find_certificate(kid)
     certificates = fetch_certificates
-    unless certificates.keys.include?(kid)
+    unless certificates.key?(kid)
       raise "Invalid 'kid', do not correspond to one of valid public keys."
     end
 
@@ -163,10 +160,14 @@ module FirebaseAuth
       errors << "Invalid ID token. #{e.message}"
     end
 
-    # verify subject ("sub") and algorithm ("alg")
     sub = decoded_token[0]["sub"]
     alg = decoded_token[1]["alg"]
 
+    verify_sub_and_alg(sub, alg, errors)
+  end
+
+  # verify subject ("sub") and algorithm ("alg")
+  def verify_sub_and_alg(sub, alg, errors)
     unless sub.is_a?(String) && !sub.empty?
       errors << "Invalid ID token. 'Subject' (sub) must be a non-empty string."
     end

@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  index_users_on_uid  (uid)
+#  index_users_on_uid  (uid) UNIQUE
 #
 class User < ApplicationRecord
   has_many :entries, dependent: :destroy

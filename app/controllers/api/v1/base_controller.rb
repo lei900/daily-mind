@@ -23,4 +23,3 @@ class Api::V1::BaseController < ActionController::API
     @_current_user
   end
 end
-end
