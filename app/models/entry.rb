@@ -5,6 +5,7 @@
 #  id            :bigint           not null, primary key
 #  entyable_type :string
 #  status        :integer
+#  user_uid      :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  community_id  :bigint
@@ -15,6 +16,7 @@
 #
 #  index_entries_on_community_id  (community_id)
 #  index_entries_on_user_id       (user_id)
+#  index_entries_on_user_uid      (user_uid)
 #
 # Foreign Keys
 #

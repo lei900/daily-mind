@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_235747) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_000531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,8 +65,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_235747) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_uid"
     t.index ["community_id"], name: "index_entries_on_community_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
+    t.index ["user_uid"], name: "index_entries_on_user_uid"
   end
 
   create_table "exercises", force: :cascade do |t|
