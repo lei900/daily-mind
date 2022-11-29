@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, format: "json" do
     namespace :v1 do
-      get "/users/new", to: "users#create"
-      patch "/users/update", to: "users#update"
+      post "/auth", to: "authentications#create"
       resources :exercises, only: %i[index show] do
         resources :questions, only: %i[index show]
       end

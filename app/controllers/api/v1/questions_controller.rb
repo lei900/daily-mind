@@ -1,5 +1,5 @@
 class Api::V1::QuestionsController < Api::V1::BaseController
-  skip_before_action :authorize_request
+  skip_before_action :authenticate
 
   def index
     questions = Question.where(exercise_id: params[:exercise_id])

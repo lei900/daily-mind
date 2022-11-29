@@ -1,17 +1,18 @@
-# Error handler
-
 module Api::ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
     rescue_from StandardError, with: :render_500
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
+    rescue_from ActiveRecord::RecordInvalid do |exception|
+      render_400(nil, exception.record.errors.full_messages)
+    end
   end
 
   private
 
   def render_400(exception = nil, messages = nil)
-    render_error(400, "Bad Request", exception&.message, *messages)
+    render_error(400, "Bad Request", exception&.messages, *messages)
   end
 
   def render_404(exception = nil, messages = nil)
@@ -23,7 +24,7 @@ module Api::ExceptionHandler
   end
 
   def render_error(code, message, *error_messages)
-    response = { message:, errors: error_messages.compact }
+    response = { message: message, errors: error_messages.compact }
 
     render json: response, status: code
   end
