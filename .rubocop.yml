@@ -29,6 +29,10 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Max: 30
 
+Naming/VariableNumber:
+  Exclude:
+    - "app/controllers/**/*"
+
 Metrics/MethodLength:
   CountComments: false
   Max: 30

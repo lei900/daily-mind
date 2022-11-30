@@ -9,9 +9,10 @@ class ExerciseDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    conclusion: RichTextAreaField,
-    detailed_description: RichTextAreaField,
+    conclusion: Field::Text,
+    detailed_description: Field::Text,
     image: Field::String,
+    questions: Field::HasMany,
     short_description: Field::String,
     slug: Field::String,
     title: Field::String,
@@ -33,6 +34,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     conclusion
     detailed_description
     image
+    questions
     short_description
     slug
     title
@@ -47,6 +49,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     conclusion
     detailed_description
     image
+    questions
     short_description
     slug
     title

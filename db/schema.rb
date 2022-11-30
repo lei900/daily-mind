@@ -10,59 +10,108 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_072032) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_111706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
+  create_table "analysis_distortions", force: :cascade do |t|
+    t.bigint "distortion_id", null: false
+    t.bigint "thought_analysis_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+    t.index ["distortion_id"], name: "index_analysis_distortions_on_distortion_id"
+    t.index ["thought_analysis_id"], name: "index_analysis_distortions_on_thought_analysis_id"
   end
 
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "choices", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "content"
+    t.boolean "is_correct_choice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
     t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.string "introduction"
+    t.string "thumbnail", null: false
     t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.datetime "updated_at", null: false
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
-    t.bigint "byte_size", null: false
-    t.string "checksum"
+  create_table "diaries", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "mood", null: false
     t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+    t.datetime "updated_at", null: false
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  create_table "distortions", force: :cascade do |t|
+    t.string "name"
+    t.string "definition"
+    t.text "description"
+    t.string "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.string "entyable_type"
+    t.integer "entryable_id"
+    t.bigint "community_id"
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_entries_on_community_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "exercises", force: :cascade do |t|
     t.string "title"
-    t.string "short_description"
+    t.string "caption"
     t.text "detailed_description"
     t.string "image"
     t.text "conclusion"
-    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  create_table "questions", force: :cascade do |t|
+    t.text "body"
+    t.text "result_interpretation"
+    t.bigint "exercise_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_questions_on_exercise_id"
+  end
+
+  create_table "thought_analyses", force: :cascade do |t|
+    t.text "negative_thought"
+    t.text "new_thought"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "sub", null: false
+    t.string "nickname", null: false
+    t.string "bio"
+    t.integer "role", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.string "username"
+    t.string "profile_picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username"
+  end
+
+  add_foreign_key "analysis_distortions", "distortions"
+  add_foreign_key "analysis_distortions", "thought_analyses"
+  add_foreign_key "choices", "questions"
+  add_foreign_key "entries", "communities"
+  add_foreign_key "entries", "users"
+  add_foreign_key "questions", "exercises"
 end
