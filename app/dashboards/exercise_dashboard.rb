@@ -13,8 +13,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     detailed_description: Field::Text,
     image: Field::String,
     questions: Field::HasMany,
-    short_description: Field::String,
-    slug: Field::String,
+    caption: Field::String,
     title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -35,8 +34,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     detailed_description
     image
     questions
-    short_description
-    slug
+    caption
     title
     created_at
     updated_at
@@ -50,8 +48,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     detailed_description
     image
     questions
-    short_description
-    slug
+    caption
     title
   ].freeze
 
