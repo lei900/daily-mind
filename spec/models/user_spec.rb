@@ -2,20 +2,15 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
-#  bio             :string
-#  nickname        :string           not null
-#  profile_picture :string
-#  role            :integer          default("general"), not null
-#  status          :integer          default("active"), not null
-#  sub             :string           not null
-#  username        :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id         :bigint           not null, primary key
+#  role       :integer          default("general"), not null
+#  uid        :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_users_on_username  (username)
+#  index_users_on_uid  (uid) UNIQUE
 #
 require 'rails_helper'
 

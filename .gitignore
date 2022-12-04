@@ -30,6 +30,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ingore environmental variables
 .env
 
 /node_modules
@@ -42,3 +43,6 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore mac files
+.DS_Store
