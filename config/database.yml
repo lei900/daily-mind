@@ -82,5 +82,3 @@ test:
 production:
   <<: *default
   database: daily_mind_backend_production
-  username: daily_mind
-  password: <%= ENV["DAILY_MIND_DATABASE_PASSWORD"] %>
