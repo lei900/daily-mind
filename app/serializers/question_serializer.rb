@@ -19,5 +19,6 @@
 #
 class QuestionSerializer
   include JSONAPI::Serializer
+  set_key_transform :camel_lower
   attributes :body, :result_interpretation, :choices
 end
