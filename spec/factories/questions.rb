@@ -22,6 +22,7 @@ FactoryBot.define do
   factory :question do
     exercise
     sequence(:body) { |n| "MyQuestion-#{n}" }
+    sequence(:qid) { |n| n + 1 }
     sequence(:result_interpretation) { |n| "MyResult-#{n}" }
 
     after :create do |question|

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "/auth", to: "authentications#create"
       resources :exercises, only: %i[index show] do
-        resources :questions, only: %i[index show]
+        resources :questions, only: %i[index]
+        get "/questions/:qid", to: "questions#show"
       end
     end
   end
