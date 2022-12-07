@@ -4,6 +4,7 @@
 #
 #  id                    :bigint           not null, primary key
 #  body                  :text
+#  qid                   :integer
 #  result_interpretation :text
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
@@ -20,5 +21,5 @@
 class QuestionSerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
-  attributes :body, :result_interpretation, :choices
+  attributes :qid, :body, :result_interpretation, :choices
 end
