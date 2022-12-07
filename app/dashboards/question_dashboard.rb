@@ -9,6 +9,7 @@ class QuestionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    qid: Field::Number,
     body: Field::Text,
     choices: Field::HasMany,
     exercise: Field::BelongsTo,
@@ -28,6 +29,7 @@ class QuestionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    qid
     body
     choices
     exercise
