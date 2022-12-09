@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ChoiceDashboard < Administrate::BaseDashboard
+class DistortionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,10 +9,11 @@ class ChoiceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    content: Field::String,
-    is_correct_choice: Field::Boolean,
-    distortion_name: Field::String,
-    question: Field::BelongsTo,
+    analysis_distortions: Field::HasMany,
+    definition: Field::String,
+    description: Field::Text,
+    name: Field::String,
+    thumbnail: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -22,22 +23,16 @@ class ChoiceDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = %i[
-    id
-    content
-    is_correct_choice
-    distortion_name
-    question
-  ].freeze
+  COLLECTION_ATTRIBUTES = %i[id name definition description].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    content
-    is_correct_choice
-    distortion_name
-    question
+    definition
+    description
+    name
+    thumbnail
     created_at
     updated_at
   ].freeze
@@ -45,12 +40,7 @@ class ChoiceDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
-    content
-    is_correct_choice
-    distortion_name
-    question
-  ].freeze
+  FORM_ATTRIBUTES = %i[definition description name thumbnail].freeze
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
@@ -64,10 +54,10 @@ class ChoiceDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how choices are displayed
+  # Overwrite this method to customize how distortions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(choice)
-  #   "Choice ##{choice.id}"
+  # def display_resource(distortion)
+  #   "Distortion ##{distortion.id}"
   # end
 end
