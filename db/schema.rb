@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_050458) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_064219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_050458) do
     t.boolean "is_correct_choice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "distortion_name"
     t.index ["question_id"], name: "index_choices_on_question_id"
   end
 

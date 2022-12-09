@@ -11,6 +11,7 @@ class ChoiceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     content: Field::String,
     is_correct_choice: Field::Boolean,
+    distortion_name: Field::String,
     question: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -25,6 +26,7 @@ class ChoiceDashboard < Administrate::BaseDashboard
     id
     content
     is_correct_choice
+    distortion_name
     question
   ].freeze
 
@@ -34,6 +36,7 @@ class ChoiceDashboard < Administrate::BaseDashboard
     id
     content
     is_correct_choice
+    distortion_name
     question
     created_at
     updated_at
@@ -45,6 +48,7 @@ class ChoiceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     content
     is_correct_choice
+    distortion_name
     question
   ].freeze
 
