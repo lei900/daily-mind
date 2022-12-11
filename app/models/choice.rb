@@ -20,5 +20,7 @@
 #
 class Choice < ApplicationRecord
   belongs_to :question
+  has_one :choice_distortion
+  has_one :distortion, through: :choice_distortion
   validates :content, presence: true
 end

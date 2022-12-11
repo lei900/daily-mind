@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ChoiceDashboard < Administrate::BaseDashboard
+class ChoiceDistortionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,12 +9,8 @@ class ChoiceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    content: Field::String,
-    is_correct_choice: Field::Boolean,
-    distortion_name: Field::String,
-    choice_distortion: Field::HasOne,
-    distortion: Field::HasOne,
-    question: Field::BelongsTo,
+    choice: Field::BelongsTo,
+    distortion: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,21 +22,17 @@ class ChoiceDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    content
-    is_correct_choice
-    distortion_name
-    question
+    choice
+    distortion
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    content
-    is_correct_choice
-    distortion_name
+    choice
     distortion
-    question
     created_at
     updated_at
   ].freeze
@@ -49,12 +41,8 @@ class ChoiceDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    content
-    is_correct_choice
-    distortion_name
-    choice_distortion
+    choice
     distortion
-    question
   ].freeze
 
   # COLLECTION_FILTERS
@@ -69,10 +57,10 @@ class ChoiceDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how choices are displayed
+  # Overwrite this method to customize how choice distortions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(choice)
-  #   "Choice ##{choice.id}"
+  # def display_resource(choice_distortion)
+  #   "ChoiceDistortion ##{choice_distortion.id}"
   # end
 end

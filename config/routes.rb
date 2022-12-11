@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :exercises, only: %i[index show] do
         resources :questions, only: %i[index]
         get "/questions/:qid", to: "questions#show"
+        get "/questions/:qid/choices", to: "choices#index"
       end
     end
   end
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :choices
     resources :distortions
+    resources :choice_distortions
 
     root to: "exercises#index"
   end

@@ -12,4 +12,5 @@
 #
 class Distortion < ApplicationRecord
   has_many :analysis_distortions
+  has_many :choice_distortions
 end
