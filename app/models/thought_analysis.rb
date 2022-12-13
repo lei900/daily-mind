@@ -9,6 +9,6 @@
 #  updated_at       :datetime         not null
 #
 class ThoughtAnalysis < ApplicationRecord
-  include Entryable
+  has_one :entry, as: :entryable, touch: true
   has_many :analysis_distortions
 end

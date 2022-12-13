@@ -10,9 +10,9 @@
 #  updated_at :datetime         not null
 #
 class Diary < ApplicationRecord
-  include Entryable
+  has_one :entry, as: :entryable, touch: true
 
   enum :mood,
-       { awful: 0, bad: 1, normal: 2, good: 3, excellent: 4 },
+       { Terrible: 0, bad: 1, neutral: 2, good: 3, great: 4 },
        suffix: true
 end
