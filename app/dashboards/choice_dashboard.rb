@@ -11,7 +11,6 @@ class ChoiceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     content: Field::String,
     is_correct_choice: Field::Boolean,
-    distortion_name: Field::String,
     choice_distortion: Field::HasOne,
     distortion: Field::HasOne,
     question: Field::BelongsTo,
@@ -24,13 +23,7 @@ class ChoiceDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = %i[
-    id
-    content
-    is_correct_choice
-    distortion_name
-    question
-  ].freeze
+  COLLECTION_ATTRIBUTES = %i[id content is_correct_choice question].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -38,7 +31,6 @@ class ChoiceDashboard < Administrate::BaseDashboard
     id
     content
     is_correct_choice
-    distortion_name
     distortion
     question
     created_at
@@ -51,7 +43,6 @@ class ChoiceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     content
     is_correct_choice
-    distortion_name
     choice_distortion
     distortion
     question
