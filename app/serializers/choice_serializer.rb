@@ -4,7 +4,6 @@
 #
 #  id                :bigint           not null, primary key
 #  content           :string
-#  distortion_name   :string
 #  is_correct_choice :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -21,5 +20,5 @@
 class ChoiceSerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
-  attributes :content, :is_correct_choice, :distortion_name, :distortion
+  attributes :content, :is_correct_choice, :distortion
 end
