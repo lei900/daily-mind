@@ -11,7 +11,8 @@ class DiaryDashboard < Administrate::BaseDashboard
     id: Field::Number,
     body: Field::Text,
     entry: Field::HasOne,
-    mood: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
+    mood: Field::Select.with_options(searchable: false, collection: ->(field) {
+ field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
