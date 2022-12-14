@@ -22,7 +22,7 @@ RSpec.describe "Api::V1::Questions", type: :request do
     end
   end
 
-  describe "GET /show" do
+  describe "GET exercises/:id/questions/:qid" do
     let(:exercise) { create(:exercise) }
     let(:question) { create(:question, exercise: exercise) }
 

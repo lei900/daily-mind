@@ -11,8 +11,8 @@
 #
 FactoryBot.define do
   factory :diary do
-    title { "MyString" }
-    body { "MyText" }
+    sequence(:title) { |n| "MyTitle-#{n}" }
+    sequence(:body) { |n| "MyBody-#{n}" }
     mood { 1 }
   end
 end

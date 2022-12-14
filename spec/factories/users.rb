@@ -14,7 +14,7 @@
 #
 FactoryBot.define do
   factory :user do
-    uid { "MyUid" }
+    uid { |n| "MyUid-#{n}" }
     role { 0 }
   end
 end

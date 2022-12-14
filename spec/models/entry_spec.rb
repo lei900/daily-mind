@@ -2,15 +2,15 @@
 #
 # Table name: entries
 #
-#  id            :bigint           not null, primary key
-#  entyable_type :string
-#  status        :integer
-#  user_uid      :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  community_id  :bigint
-#  entryable_id  :integer
-#  user_id       :bigint           not null
+#  id             :bigint           not null, primary key
+#  entryable_type :string
+#  status         :integer
+#  user_uid       :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  community_id   :bigint
+#  entryable_id   :integer
+#  user_id        :bigint           not null
 #
 # Indexes
 #

@@ -12,7 +12,7 @@
 FactoryBot.define do
   factory :community do
     name { "MyString" }
-    introdoction { "MyString" }
+    introduction { "MyString" }
     thumbnail { "MyString" }
   end
 end
