@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_070320) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_085719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_070320) do
   end
 
   create_table "entries", force: :cascade do |t|
-    t.string "entyable_type"
+    t.string "entryable_type"
     t.integer "entryable_id"
     t.bigint "community_id"
     t.bigint "user_id", null: false

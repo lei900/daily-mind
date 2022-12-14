@@ -17,7 +17,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
     end
   end
 
-  describe "GET /exercises/{id}" do
+  describe "GET /exercises/:id" do
     let!(:exercise) { create(:exercise) }
 
     it "returns exercise in json format" do

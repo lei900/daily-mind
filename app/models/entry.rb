@@ -2,15 +2,15 @@
 #
 # Table name: entries
 #
-#  id            :bigint           not null, primary key
-#  entyable_type :string
-#  status        :integer
-#  user_uid      :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  community_id  :bigint
-#  entryable_id  :integer
-#  user_id       :bigint           not null
+#  id             :bigint           not null, primary key
+#  entryable_type :string
+#  status         :integer
+#  user_uid       :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  community_id   :bigint
+#  entryable_id   :integer
+#  user_id        :bigint           not null
 #
 # Indexes
 #
@@ -31,10 +31,7 @@ class Entry < ApplicationRecord
 
   enum :status, { draft: 0, published: 1, private: 2 }, prefix: true
 
-  # params = { note: { authorable_type: 'Employee', body: "sample text", authorable_attributes: { name: 'Emp one' } } }
-  # note = Note.create!(params[:note])
-
-  # user.status_pending? # status == 'pending'
-  # user.status_active! # update(status: :active)
-  # User.status_archived # User.where(status: :archived)
+  # entry.status_draft? # status == 'draft'
+  # entry.status_published! # update(status: :published)
+  # entry.status_private # User.where(status: :private)
 end

@@ -23,8 +23,13 @@
 #  fk_rails_...  (community_id => communities.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+class EntrySerializer
+  include JSONAPI::Serializer
+  set_key_transform :camel_lower
+  belongs_to :community
+  belongs_to :user
+  belongs_to :diary
+  belongs_to :thought_analysis
 
-RSpec.describe Entry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  attributes :entyable_type, :entyable_id, :user_uid, :status
 end
