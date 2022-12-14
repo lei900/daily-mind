@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :choices
     resources :distortions
     resources :choice_distortions
+    resources :diaries
+    resources :entries
 
     root to: "exercises#index"
   end
