@@ -23,15 +23,13 @@
 #  fk_rails_...  (community_id => communities.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class Entry < ApplicationRecord
+class EntrySerializer
+  include JSONAPI::Serializer
+  set_key_transform :camel_lower
   belongs_to :community
   belongs_to :user
-  delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
-  accepts_nested_attributes_for :entryable
+  belongs_to :diary
+  belongs_to :thought_analysis
 
-  enum :status, { draft: 0, published: 1, private: 2 }, prefix: true
-
-  # entry.status_draft? # status == 'draft'
-  # entry.status_published! # update(status: :published)
-  # entry.status_private # User.where(status: :private)
+  attributes :entyable_type, :entyable_id, :user_uid, :status
 end
