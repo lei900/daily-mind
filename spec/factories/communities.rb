@@ -9,9 +9,13 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+# Indexes
+#
+#  index_communities_on_name  (name) UNIQUE
+#
 FactoryBot.define do
   factory :community do
-    name { "MyString" }
+    name { |n| "MyName-#{n}" }
     introduction { "MyString" }
     thumbnail { "MyString" }
   end
