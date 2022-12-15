@@ -1,6 +1,6 @@
 class Api::V1::EntriesController < Api::V1::BaseController
   before_action :set_entry, only: %i[update destroy]
-  # skip_before_action :authenticate, only: %i[index show]
+  skip_before_action :authenticate, only: %i[index show]
 
   def index
     entries = Entry.all.status_published.order(created_at: :desc)
