@@ -22,4 +22,16 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   enum :role, { general: 0, admin: 1 }, default: :general
+
+  def self.find_or_create_user(user_info)
+    if (user = User.find_by(uid: user_info[:uid]))
+      return user
+    else
+      User.create!(
+        uid: user_info[:uid],
+        nickname: user_info[:nickname],
+        avatar: user_info[:avatar],
+      )
+    end
+  end
 end
