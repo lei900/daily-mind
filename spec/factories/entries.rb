@@ -24,7 +24,7 @@ FactoryBot.define do
   factory :entry do
     transient { entryable { nil } }
 
-    user { nil }
+    user
     user_uid { user.uid }
     status { 1 }
     entryable_id { entryable.id }

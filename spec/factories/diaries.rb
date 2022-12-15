@@ -14,5 +14,23 @@ FactoryBot.define do
     sequence(:title) { |n| "MyTitle-#{n}" }
     sequence(:body) { |n| "MyBody-#{n}" }
     mood { 1 }
+
+    trait :published do
+      after(:create) do |diary|
+        create(:entry, entryable: diary, status: :published)
+      end
+    end
+
+    trait :private do
+      after(:create) do |diary|
+        create(:entry, entryable: diary, status: :private)
+      end
+    end
+
+    trait :draft do
+      after(:create) do |diary|
+        create(:entry, entryable: diary, status: :draft)
+      end
+    end
   end
 end
