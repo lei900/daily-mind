@@ -27,9 +27,9 @@ class Entry < ApplicationRecord
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
   accepts_nested_attributes_for :entryable
 
-  enum :status, { draft: 0, published: 1, private: 2 }, prefix: true
-
+  # Use prefix to avoid confict with perserved keyword "private"
   # entry.status_draft? # status == 'draft'
   # entry.status_published! # update(status: :published)
   # entry.status_private # User.where(status: :private)
+  enum :status, { draft: 0, published: 1, private: 2 }, prefix: true
 end

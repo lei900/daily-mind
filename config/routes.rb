@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       scope module: :entry do
         resources :diaries, only: %i[create update destroy]
       end
+      resources :entries, only: %i[index show create update destroy]
     end
   end
 

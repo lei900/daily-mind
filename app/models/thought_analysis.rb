@@ -11,4 +11,5 @@
 class ThoughtAnalysis < ApplicationRecord
   has_one :entry, as: :entryable, touch: true, dependent: :destroy
   has_many :analysis_distortions
+  has_many :distortions, through: :analysis_distortions
 end

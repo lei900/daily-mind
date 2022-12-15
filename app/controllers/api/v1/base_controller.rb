@@ -21,5 +21,6 @@ class Api::V1::BaseController < ActionController::API
 
   def current_user
     @_current_user
+    # User.first
   end
 end
