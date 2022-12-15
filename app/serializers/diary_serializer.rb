@@ -12,7 +12,6 @@
 class DiarySerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
-  # has_one :entry, serializer: :entry
 
-  attributes :title, :body, :mood
+  attributes :title, :body, :mood, :entry
 end

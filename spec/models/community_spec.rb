@@ -9,6 +9,10 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+# Indexes
+#
+#  index_communities_on_name  (name) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Community, type: :model do
