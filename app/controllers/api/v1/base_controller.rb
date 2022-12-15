@@ -14,7 +14,7 @@ class Api::V1::BaseController < ActionController::API
       if result[:errors]
         render_400(nil, result[:errors])
       else
-        @_current_user = User.find_or_create_by!(uid: result[:uid])
+        @_current_user = User.find_or_create_user(result)
       end
     end
   end

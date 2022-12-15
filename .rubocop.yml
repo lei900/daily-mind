@@ -132,3 +132,6 @@ Style/RedundantReturn:
 # Enable to use hash like "message: message"
 Style/HashSyntax:
   Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
