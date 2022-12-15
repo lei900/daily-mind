@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_085719) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_15_054927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_085719) do
     t.string "thumbnail", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_communities_on_name", unique: true
+  end
+
+  create_table "community_entries", force: :cascade do |t|
+    t.bigint "community_id", null: false
+    t.bigint "entry_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id", "entry_id"], name: "index_community_entries_on_community_id_and_entry_id", unique: true
+    t.index ["community_id"], name: "index_community_entries_on_community_id"
+    t.index ["entry_id"], name: "index_community_entries_on_entry_id"
   end
 
   create_table "diaries", force: :cascade do |t|
@@ -69,13 +80,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_085719) do
   create_table "entries", force: :cascade do |t|
     t.string "entryable_type"
     t.integer "entryable_id"
-    t.bigint "community_id"
     t.bigint "user_id", null: false
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_uid"
-    t.index ["community_id"], name: "index_entries_on_community_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
     t.index ["user_uid"], name: "index_entries_on_user_uid"
   end
@@ -118,7 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_085719) do
   add_foreign_key "analysis_distortions", "distortions"
   add_foreign_key "analysis_distortions", "thought_analyses"
   add_foreign_key "choices", "questions"
-  add_foreign_key "entries", "communities"
+  add_foreign_key "community_entries", "communities"
+  add_foreign_key "community_entries", "entries"
   add_foreign_key "entries", "users"
   add_foreign_key "questions", "exercises"
 end
