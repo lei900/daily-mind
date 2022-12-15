@@ -10,5 +10,9 @@
 #  updated_at   :datetime         not null
 #
 class Community < ApplicationRecord
-  has_many :entries
+  has_many :community_entries, dependent: :destroy
+  has_many :entries, through: :community_entries
+
+  validates :name, presence: true, uniqueness: true
+  validates :thumbnail, presence: true
 end

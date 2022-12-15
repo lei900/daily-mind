@@ -41,7 +41,6 @@ module Api
           .require(:entry)
           .permit(
             :entryable_type,
-            :community_id,
             :status,
             entryable_attributes: %i[title body mood],
           )
