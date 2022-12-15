@@ -3,6 +3,9 @@
 # Table name: users
 #
 #  id         :bigint           not null, primary key
+#  avatar     :string
+#  bio        :string
+#  nickname   :string
 #  role       :integer          default("general"), not null
 #  uid        :string           not null
 #  created_at :datetime         not null
