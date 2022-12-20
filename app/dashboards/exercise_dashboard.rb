@@ -15,6 +15,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     questions: Field::HasMany,
     caption: Field::String,
     title: Field::String,
+    participants_number: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -30,6 +31,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     conclusion
     detailed_description
     caption
+    participants_number
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,6 +44,7 @@ class ExerciseDashboard < Administrate::BaseDashboard
     questions
     caption
     title
+    participants_number
     created_at
     updated_at
   ].freeze
@@ -50,12 +53,13 @@ class ExerciseDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    conclusion
+    title
+    caption
     detailed_description
+    conclusion
     image
     questions
-    caption
-    title
+    participants_number
   ].freeze
 
   # COLLECTION_FILTERS
