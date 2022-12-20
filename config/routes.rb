@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         resources :questions, only: %i[index]
         get "/questions/:qid", to: "questions#show"
         get "/questions/:qid/choices", to: "choices#index"
+        patch "/participations", to: "exercises/participations#update"
       end
       scope module: :entry do
         resources :diaries, only: %i[create update destroy]

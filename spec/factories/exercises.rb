@@ -7,6 +7,7 @@
 #  conclusion           :text
 #  detailed_description :text
 #  image                :string
+#  participants_number  :integer          default(0)
 #  title                :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
