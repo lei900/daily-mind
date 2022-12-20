@@ -32,4 +32,8 @@ class Entry < ApplicationRecord
   # entry.status_published! # update(status: :published)
   # entry.status_private # User.where(status: :private)
   enum :status, { draft: 0, published: 1, private: 2 }, prefix: true
+
+  def create_community_entry(community_id)
+    self.community = Community.find(community_id) if community_id
+  end
 end

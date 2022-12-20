@@ -19,11 +19,10 @@
 #  fk_rails_...  (community_id => communities.id)
 #  fk_rails_...  (entry_id => entries.id)
 #
-class CommunityEntrySerializer
-  include JSONAPI::Serializer
-  set_key_transform :camel_lower
 
-  belongs_to :entry
-  belongs_to :community
-  attributes :entry_id, :community_id
+FactoryBot.define do
+  factory :community_entries do
+    community
+    entry
+  end
 end
