@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :communities
     resources :community_entries
     resources :users
+    resources :thought_analyses
 
     root to: "exercises#index"
   end
