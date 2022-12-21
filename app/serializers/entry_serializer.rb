@@ -24,8 +24,5 @@ class EntrySerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
 
-  # belongs_to :thought_analysis
-
-  attributes :entryable_type, :entryable_id, :status, :user, :diary, :community
-  #  :thought_analysis
+  attributes :entryable_type, :entryable_id, :status, :user, :diary, :community, :thought_analysis
 end

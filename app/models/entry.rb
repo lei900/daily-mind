@@ -23,6 +23,8 @@
 class Entry < ApplicationRecord
   has_one :community_entry, dependent: :destroy
   has_one :community, through: :community_entry
+  has_many :analysis_distortions
+  has_many :distortions, through: :analysis_distortions
   belongs_to :user
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
   accepts_nested_attributes_for :entryable
