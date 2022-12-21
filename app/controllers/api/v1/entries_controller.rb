@@ -18,6 +18,7 @@ class Api::V1::EntriesController < Api::V1::BaseController
   def create
     entry = current_user.entries.new(entry_params)
     entry.create_community_entry(params[:entry][:community_id])
+    entry.create_distortions(params[:entry][:distortion_ids])
 
     if entry.save
       json_string = EntrySerializer.new(entry).serializable_hash.to_json
@@ -29,6 +30,7 @@ class Api::V1::EntriesController < Api::V1::BaseController
 
   def update
     @entry.create_community_entry(params[:entry][:community_id])
+    @entry.create_distortions(params[:entry][:distortion_ids])
 
     if @entry.update(entry_params)
       json_string = EntrySerializer.new(@entry).serializable_hash.to_json
