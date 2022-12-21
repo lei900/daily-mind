@@ -23,6 +23,8 @@
 class Entry < ApplicationRecord
   has_one :community_entry, dependent: :destroy
   has_one :community, through: :community_entry
+  has_many :entry_distortions
+  has_many :distortions, through: :entry_distortions
   belongs_to :user
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
   accepts_nested_attributes_for :entryable
@@ -35,5 +37,10 @@ class Entry < ApplicationRecord
 
   def create_community_entry(community_id)
     self.community = Community.find(community_id) if community_id
+  end
+
+  def create_distortions(distortion_ids)
+    self.distortions =
+      distortion_ids.map { |id| Distortion.find(id) } if distortion_ids
   end
 end
