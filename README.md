@@ -1,3 +1,5 @@
+## フロントエンドRepo: [daily-mind-next-frontend](https://github.com/lei900/daily-mind-next-frontend)
+
 ### サービス概要
 
 ネガティブな考えに囚われて、抜け出したい人に  
@@ -60,6 +62,6 @@ https://drive.google.com/file/d/1n5JOkpUXLjSfRYyG3F08gCQ-uc4FHYBj/view?usp=shari
 
 - 企画〜技術調査(React 学習）：10/20 〆切
 - README〜ER 図作成：10/27 〆切
-- メイン機能実装：10/27 - 11/30
-- β 版を RUNTEQ 内リリース（MVP）：11/30 〆切
-- 本番リリース：12/15 〆切
+- メイン機能実装：10/27 - 1/8
+- β 版を RUNTEQ 内リリース（MVP）：1/10 〆切
+- 本番リリース：1/25 〆切
