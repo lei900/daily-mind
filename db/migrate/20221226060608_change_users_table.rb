@@ -5,6 +5,6 @@ class ChangeUsersTable < ActiveRecord::Migration[7.0]
     #   t.rename :profile_picture, :avatar
     #   t.remove :status, :username
     #   t.index :uid, unique: true
-    end
+    # end
   end
 end
