@@ -5,6 +5,6 @@ class CreateEntryDistortions < ActiveRecord::Migration[7.0]
     #   t.references :entry, null: false, foreign_key: true
 
     #   t.timestamps
-    end
+    # end
   end
 end
