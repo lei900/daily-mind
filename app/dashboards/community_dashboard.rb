@@ -13,7 +13,7 @@ class CommunityDashboard < Administrate::BaseDashboard
     entries: Field::HasMany,
     introduction: Field::String,
     name: Field::String,
-    thumbnail: Field::String,
+    icon: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -31,7 +31,7 @@ class CommunityDashboard < Administrate::BaseDashboard
     id
     name
     introduction
-    thumbnail
+    icon
     community_entries
     entries
     created_at
@@ -41,13 +41,7 @@ class CommunityDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
-    name
-    introduction
-    thumbnail
-    community_entries
-    entries
-  ].freeze
+  FORM_ATTRIBUTES = %i[name introduction icon community_entries entries].freeze
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search

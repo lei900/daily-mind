@@ -5,8 +5,8 @@
 #  id          :bigint           not null, primary key
 #  definition  :string
 #  description :text
+#  icon        :string
 #  name        :string
-#  thumbnail   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -15,6 +15,6 @@ FactoryBot.define do
     name { "MyString" }
     definition { "MyString" }
     description { "MyText" }
-    thumbnail { "MyString" }
+    icon { "MyString" }
   end
 end

@@ -13,7 +13,7 @@ class DistortionDashboard < Administrate::BaseDashboard
     definition: Field::String,
     description: Field::Text,
     name: Field::String,
-    thumbnail: Field::String,
+    icon: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -32,7 +32,7 @@ class DistortionDashboard < Administrate::BaseDashboard
     definition
     description
     name
-    thumbnail
+    icon
     created_at
     updated_at
   ].freeze
@@ -40,7 +40,7 @@ class DistortionDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[definition description name thumbnail].freeze
+  FORM_ATTRIBUTES = %i[definition description name icon].freeze
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search

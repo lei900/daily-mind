@@ -5,8 +5,8 @@
 #  id          :bigint           not null, primary key
 #  definition  :string
 #  description :text
+#  icon        :string
 #  name        :string
-#  thumbnail   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

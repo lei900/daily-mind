@@ -3,9 +3,9 @@
 # Table name: communities
 #
 #  id           :bigint           not null, primary key
+#  icon         :string           not null
 #  introduction :string
 #  name         :string           not null
-#  thumbnail    :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
@@ -20,5 +20,5 @@ class CommunitySerializer
   has_many :community_entries, dependent: :destroy
   has_many :entries, through: :community_entries
 
-  attributes :name, :introduction, :thumbnail
+  attributes :name, :introduction, :icon
 end
