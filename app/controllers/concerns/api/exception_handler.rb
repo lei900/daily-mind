@@ -2,10 +2,12 @@ module Api::ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-    rescue_from StandardError, with: :render_500
+    rescue_from StandardError do |exception|
+      render_500(exception, nil)
+    end
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from ActiveRecord::RecordInvalid do |exception|
-      render_400(nil, exception.record.errors.full_messages)
+      render_400(exception, exception.record.errors.full_messages)
     end
   end
 
