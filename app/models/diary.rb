@@ -13,6 +13,6 @@ class Diary < ApplicationRecord
   has_one :entry, as: :entryable, touch: true, dependent: :destroy
 
   enum :mood,
-       { Terrible: 0, bad: 1, neutral: 2, good: 3, great: 4 },
+       { terrible: 0, bad: 1, neutral: 2, good: 3, great: 4 },
        suffix: true
 end

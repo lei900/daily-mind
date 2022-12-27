@@ -3,7 +3,12 @@ class Api::V1::EntriesController < Api::V1::BaseController
   skip_before_action :authenticate, only: %i[index show]
 
   def index
-    entries = Entry.all.status_published.order(created_at: :desc)
+    entries =
+      Entry
+        .all
+        .status_published
+        .includes(:distortions, :community, :user, :entryable)
+        .order(created_at: :desc)
 
     json_string = EntrySerializer.new(entries).serializable_hash.to_json
     render json: json_string
