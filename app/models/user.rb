@@ -17,7 +17,6 @@
 #
 class User < ApplicationRecord
   has_many :entries, dependent: :destroy
-
   validates :uid, presence: true, uniqueness: true
   validates :role, presence: true
 
@@ -27,10 +26,6 @@ class User < ApplicationRecord
     user = User.find_by(uid: user_info[:uid])
     return user if user
 
-    User.create!(
-      uid: user_info[:uid],
-      nickname: user_info[:nickname],
-      avatar: user_info[:avatar],
-    )
+    User.create!(uid: user_info[:uid], nickname: "User_" + uid[0, 4])
   end
 end
