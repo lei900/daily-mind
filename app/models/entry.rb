@@ -26,7 +26,7 @@
 class Entry < ApplicationRecord
   has_one :community_entry, dependent: :destroy
   has_one :community, through: :community_entry
-  has_many :entry_distortions
+  has_many :entry_distortions, dependent: :destroy
   has_many :distortions, through: :entry_distortions
   belongs_to :user
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
