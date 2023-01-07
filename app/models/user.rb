@@ -17,6 +17,12 @@
 #
 class User < ApplicationRecord
   has_many :entries, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_entries,
+           through: :likes,
+           source: :likeable,
+           source_type: "Entry"
+
   validates :uid, presence: true, uniqueness: true
   validates :role, presence: true
 

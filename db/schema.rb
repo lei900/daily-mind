@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_062355) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_07_084351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,6 +102,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_062355) do
     t.integer "participants_number", default: 0
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id", "likeable_type", "likeable_id"], name: "index_likes_on_user_id_and_likeable_type_and_likeable_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "body"
     t.text "result_interpretation"
@@ -137,5 +148,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_062355) do
   add_foreign_key "entries", "users"
   add_foreign_key "entry_distortions", "distortions"
   add_foreign_key "entry_distortions", "entries"
+  add_foreign_key "likes", "users"
   add_foreign_key "questions", "exercises"
 end
