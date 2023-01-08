@@ -43,4 +43,12 @@ class EntrySerializer
   attribute :entry_liker_uids do |object|
     object.entry_likers.pluck(:uid)
   end
+
+  attribute :bookmarks do |object|
+    object.bookmarks.count.to_s
+  end
+
+  attribute :bookmarker_uids do |object|
+    object.bookmarkers.pluck(:uid)
+  end
 end

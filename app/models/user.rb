@@ -22,6 +22,8 @@ class User < ApplicationRecord
            through: :likes,
            source: :likeable,
            source_type: "Entry"
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_entries, through: :bookmarks, source: :entry
 
   validates :uid, presence: true, uniqueness: true
   validates :role, presence: true
@@ -33,5 +35,13 @@ class User < ApplicationRecord
     return user if user
 
     User.create!(uid: user_info[:uid], nickname: "User_#{uid[0, 4]}")
+  end
+
+  def bookmark(entry)
+    bookmarked_entries << entry
+  end
+
+  def unbookmark(entry)
+    bookmarked_entries.destroy(entry)
   end
 end
