@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_07_084351) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_08_034343) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "entry_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_bookmarks_on_entry_id"
+    t.index ["user_id", "entry_id"], name: "index_bookmarks_on_user_id_and_entry_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "choice_distortions", force: :cascade do |t|
     t.bigint "choice_id"
@@ -141,6 +151,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_07_084351) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
+  add_foreign_key "bookmarks", "entries"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "choices", "questions"
   add_foreign_key "community_entries", "communities"
   add_foreign_key "community_entries", "entries"

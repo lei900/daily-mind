@@ -30,6 +30,8 @@ class Entry < ApplicationRecord
   has_many :distortions, through: :entry_distortions
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :entry_likers, through: :likes, source: :user
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarkers, through: :bookmarks, source: :user
   belongs_to :user
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
   accepts_nested_attributes_for :entryable
