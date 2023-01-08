@@ -9,7 +9,9 @@ Rails.application.routes.draw do
         get "/questions/:qid/choices", to: "choices#index"
         patch "/participations", to: "exercises/participations#update"
       end
-      resources :entries, only: %i[index show create update destroy]
+      resources :entries, only: %i[index show create update destroy] do
+        resources :comments, only: %i[index create update destroy]
+      end
       resources :likes, only: %i[create destroy]
       resources :bookmarks, only: %i[create destroy]
     end

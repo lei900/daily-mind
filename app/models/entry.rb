@@ -32,7 +32,9 @@ class Entry < ApplicationRecord
   has_many :entry_likers, through: :likes, source: :user
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarkers, through: :bookmarks, source: :user
+  has_many :comments, dependent: :destroy
   belongs_to :user
+
   delegated_type :entryable, types: %w[Diary ThoughtAnalysis]
   accepts_nested_attributes_for :entryable
 

@@ -24,9 +24,11 @@ class User < ApplicationRecord
            source_type: "Entry"
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_entries, through: :bookmarks, source: :entry
+  has_many :comments, dependent: :destroy
 
   validates :uid, presence: true, uniqueness: true
   validates :role, presence: true
+  validates :nickname, presence: true, length: { maximum: 32 }
 
   enum :role, { general: 0, admin: 1 }, default: :general
 

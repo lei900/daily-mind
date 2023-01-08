@@ -12,6 +12,9 @@
 class Diary < ApplicationRecord
   has_one :entry, as: :entryable, touch: true, dependent: :destroy
 
+  validates :title, length: { maximum: 255 }
+  validates :body, length: { maximum: 65_535 }
+
   enum :mood,
        { terrible: 0, bad: 1, neutral: 2, good: 3, great: 4 },
        suffix: true
