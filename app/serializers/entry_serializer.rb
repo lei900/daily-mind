@@ -37,7 +37,7 @@ class EntrySerializer
              :distortions
 
   attribute :likes do |object|
-    object.likes.count
+    object.likes.count.to_s
   end
 
   attribute :entry_liker_uids do |object|

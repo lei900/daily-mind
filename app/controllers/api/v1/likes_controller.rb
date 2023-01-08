@@ -11,8 +11,8 @@ class Api::V1::LikesController < Api::V1::BaseController
   def destroy
     like =
       current_user.likes.find_by(
-        likeable_id: params[:like][:likeable_id],
-        likeable_type: params[:like][:likeable_type],
+        likeable_id: params[:likeable_id],
+        likeable_type: params[:likeable_type],
       )
     like.destroy!
     head :ok
