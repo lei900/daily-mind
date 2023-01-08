@@ -9,10 +9,8 @@ Rails.application.routes.draw do
         get "/questions/:qid/choices", to: "choices#index"
         patch "/participations", to: "exercises/participations#update"
       end
-      scope module: :entry do
-        resources :diaries, only: %i[create update destroy]
-      end
       resources :entries, only: %i[index show create update destroy]
+      resources :likes, only: %i[create destroy]
     end
   end
 

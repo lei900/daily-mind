@@ -35,4 +35,12 @@ class EntrySerializer
              :community,
              :thought_analysis,
              :distortions
+
+  attribute :likes do |object|
+    object.likes.count.to_s
+  end
+
+  attribute :entry_liker_uids do |object|
+    object.entry_likers.pluck(:uid)
+  end
 end
