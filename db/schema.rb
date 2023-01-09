@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_08_034343) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_08_065907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_034343) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_choices_on_question_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "entry_id", null: false
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_comments_on_entry_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "communities", force: :cascade do |t|
@@ -154,6 +166,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_034343) do
   add_foreign_key "bookmarks", "entries"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "choices", "questions"
+  add_foreign_key "comments", "comments", column: "parent_id"
+  add_foreign_key "comments", "entries"
+  add_foreign_key "comments", "users"
   add_foreign_key "community_entries", "communities"
   add_foreign_key "community_entries", "entries"
   add_foreign_key "entries", "communities"
