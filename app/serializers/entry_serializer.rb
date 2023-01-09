@@ -34,7 +34,8 @@ class EntrySerializer
              :diary,
              :community,
              :thought_analysis,
-             :distortions
+             :distortions,
+             :created_at
 
   attribute :likes do |object|
     object.likes.count.to_s
@@ -51,4 +52,21 @@ class EntrySerializer
   attribute :bookmarker_uids do |object|
     object.bookmarkers.pluck(:uid)
   end
+
+  attribute :comments do |object|
+    CommentSerializer.new(
+      object.comments.includes(:user).order(created_at: :desc),
+    )
+  end
+
+  attribute :comment_count do |object|
+    object.comments.count.to_s
+  end
+
+  # Modify it later when frontend is modified
+  # attribute :thought_analysis do |object|
+  #   object.thought_analysis.as_json.deep_transform_keys do |key|
+  #     key.camelize(:lower)
+  #   end
+  # end
 end

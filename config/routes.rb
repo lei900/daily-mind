@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         patch "/participations", to: "exercises/participations#update"
       end
       resources :entries, only: %i[index show create update destroy] do
-        resources :comments, only: %i[index create update destroy]
+        resources :comments, only: %i[create destroy]
       end
       resources :likes, only: %i[create destroy]
       resources :bookmarks, only: %i[create destroy]

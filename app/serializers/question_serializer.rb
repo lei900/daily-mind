@@ -21,5 +21,11 @@
 class QuestionSerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
-  attributes :qid, :body, :result_interpretation, :choices
+  attributes :qid, :body, :result_interpretation
+
+  attribute :choices do |object|
+    object.choices.map do |choice|
+      choice.as_json.deep_transform_keys { |key| key.camelize(:lower) }
+    end
+  end
 end

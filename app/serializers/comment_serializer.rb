@@ -25,5 +25,5 @@
 class CommentSerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
-  attributes :body, :reply
+  attributes :body, :user, :created_at, :entry_id
 end
