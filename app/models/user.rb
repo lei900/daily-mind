@@ -32,6 +32,10 @@ class User < ApplicationRecord
 
   enum :role, { general: 0, admin: 1 }, default: :general
 
+  def to_param
+    uid
+  end
+
   def self.find_or_create_user(user_info)
     user = User.find_by(uid: user_info[:uid])
     return user if user

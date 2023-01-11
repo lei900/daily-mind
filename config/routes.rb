@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       end
       resources :likes, only: %i[create destroy]
       resources :bookmarks, only: %i[create destroy]
+      resources :users, param: :uid, only: %i[show]
+      get "mypage", to: "mypage#show"
     end
   end
 

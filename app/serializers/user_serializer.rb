@@ -19,7 +19,42 @@ class UserSerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
 
-  has_many :entries, dependent: :destroy
-
   attributes :avatar, :nickname, :bio, :role, :uid
+
+  attribute :published_entries,
+            if: proc { |_user, params| params && !params[:isMypage] } do |user|
+    EntrySerializer.new(
+      user
+        .entries
+        .status_published
+        .includes(:distortions, :community, :user, :entryable)
+        .order(created_at: :desc),
+    )
+  end
+
+  attribute :draft_entries,
+            if: proc { |_user, params| params && params[:isMypage] } do |user|
+    user
+      .entries
+      .status_draft
+      .includes(:distortions, :community, :user, :entryable)
+      .order(created_at: :desc)
+  end
+
+  attribute :nondraft_entries,
+            if: proc { |_user, params| params && params[:isMypage] } do |user|
+    user
+      .entries
+      .not_status_draft
+      .includes(:distortions, :community, :user, :entryable)
+      .order(created_at: :desc)
+  end
+
+  attribute :bookmarked_entries,
+            if: proc { |_user, params| params && params[:isMypage] } do |user|
+    user
+      .bookmarked_entries
+      .includes(:distortions, :community, :user, :entryable)
+      .order(created_at: :desc)
+  end
 end
