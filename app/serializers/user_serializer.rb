@@ -22,7 +22,7 @@ class UserSerializer
   attributes :avatar, :nickname, :bio, :role, :uid
 
   attribute :published_entries,
-            if: proc { |_user, params| params && !params[:isMypage] } do |user|
+            if: proc { |_user, params| params && !params[:is_mypage] } do |user|
     EntrySerializer.new(
       user
         .entries
@@ -33,7 +33,7 @@ class UserSerializer
   end
 
   attribute :draft_entries,
-            if: proc { |_user, params| params && params[:isMypage] } do |user|
+            if: proc { |_user, params| params && params[:is_mypage] } do |user|
     user
       .entries
       .status_draft
@@ -42,7 +42,7 @@ class UserSerializer
   end
 
   attribute :nondraft_entries,
-            if: proc { |_user, params| params && params[:isMypage] } do |user|
+            if: proc { |_user, params| params && params[:is_mypage] } do |user|
     user
       .entries
       .not_status_draft
@@ -51,10 +51,14 @@ class UserSerializer
   end
 
   attribute :bookmarked_entries,
-            if: proc { |_user, params| params && params[:isMypage] } do |user|
+            if: proc { |_user, params| params && params[:is_mypage] } do |user|
     user
       .bookmarked_entries
       .includes(:distortions, :community, :user, :entryable)
       .order(created_at: :desc)
+  end
+
+  attribute :is_mypage do |_user, params|
+    params[:is_mypage]
   end
 end

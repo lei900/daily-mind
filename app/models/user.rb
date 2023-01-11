@@ -37,10 +37,11 @@ class User < ApplicationRecord
   end
 
   def self.find_or_create_user(user_info)
-    user = User.find_by(uid: user_info[:uid])
+    uid = user_info[:uid]
+    user = User.find_by(uid: uid)
     return user if user
 
-    User.create!(uid: user_info[:uid], nickname: "User_#{uid[0, 4]}")
+    User.create!(uid: uid, nickname: "User_#{uid[0, 4]}")
   end
 
   def bookmark(entry)
