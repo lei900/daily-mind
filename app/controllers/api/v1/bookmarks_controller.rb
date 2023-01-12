@@ -1,6 +1,6 @@
 class Api::V1::BookmarksController < Api::V1::BaseController
   def create
-    entry = Board.find(params[:entry_id])
+    entry = Entry.find(params[:entry_id])
     current_user.bookmark(entry)
     head :ok
   end
