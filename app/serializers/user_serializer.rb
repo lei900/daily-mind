@@ -22,7 +22,10 @@ class UserSerializer
   attributes :avatar, :nickname, :bio, :role, :uid
 
   attribute :published_entries,
-            if: proc { |_user, params| params && !params[:is_mypage] } do |user|
+            if:
+              proc { |_user, params|
+                params && !params[:is_mypage] && !params[:is_profile]
+              } do |user|
     EntrySerializer.new(
       user
         .entries
@@ -64,7 +67,11 @@ class UserSerializer
     )
   end
 
-  attribute :is_mypage do |_user, params|
+  attribute :is_mypage,
+            if:
+              proc { |_user, params|
+                params && !params[:is_profile]
+              } do |_user, params|
     params[:is_mypage]
   end
 end

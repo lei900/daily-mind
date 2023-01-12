@@ -1,4 +1,4 @@
-class Api::V1::MypageController < Api::V1::BaseController
+class Api::V1::MypagesController < Api::V1::BaseController
   # skip_before_action :authenticate
 
   def show
