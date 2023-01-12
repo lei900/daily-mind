@@ -1,5 +1,5 @@
 class Api::V1::ProfilesController < Api::V1::BaseController
-  skip_before_action :authenticate
+  # skip_before_action :authenticate
 
   def show
     json_string =
