@@ -1,4 +1,4 @@
-## バックエンドドRepo: [daily-mind-rails-backend](https://github.com/lei900/daily-mind-rails-backend)
+## フロントエンドRepo: [daily-mind-next-frontend](https://github.com/lei900/daily-mind-next-frontend)
 ## サービスURL：　[Daily Mind](https://www.idailymind.com/)
 
 ### サービス概要
