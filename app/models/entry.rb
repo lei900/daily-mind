@@ -52,4 +52,9 @@ class Entry < ApplicationRecord
     self.distortions =
       distortion_ids.map { |id| Distortion.find(id) } if distortion_ids
   end
+
+  def add_community_and_distortions(community_id, distortion_ids)
+    create_community_entry(community_id)
+    create_distortions(distortion_ids)
+  end
 end
