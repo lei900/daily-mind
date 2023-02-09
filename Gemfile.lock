@@ -114,6 +114,8 @@ GEM
     debug_inspector (1.1.0)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dockerfile-rails (1.0.12)
+      rails
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -374,6 +376,7 @@ DEPENDENCIES
   brakeman
   bundler-audit
   debug
+  dockerfile-rails (>= 1.0)
   dotenv-rails
   factory_bot_rails
   faker

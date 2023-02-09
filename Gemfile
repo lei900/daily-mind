@@ -139,3 +139,4 @@ end
 # gem 'sidekiq', '~> 6.4.2'
 # gem 'redis-rails', '~> 5.0.2'
 # end
+gem "dockerfile-rails", ">= 1.0", :group => :development
