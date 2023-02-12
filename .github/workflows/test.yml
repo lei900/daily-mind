@@ -1,6 +1,6 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests.
-name: "Test"
+name: Test
 on:
   push:
     paths-ignore:
