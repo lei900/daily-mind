@@ -90,7 +90,7 @@ Vercel、fly.io
 **Next.js:** 
 近年特に勢いのあるReactフレームワーク。
 
-Server Side RenderingやStatic Generationなどの機能で画面特徴により異なる画面表示形式を実装可能。
+Server Side RenderingやStatic Site Generationなどの機能で画面特徴により異なる画面表示形式を実装可能。
 
 Pre-rendering機能で画面の表示が高速になる。
 
